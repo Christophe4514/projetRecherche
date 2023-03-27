@@ -2,8 +2,9 @@
 
 namespace App\Providers;
 
-use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use App\Models\User;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -25,6 +26,11 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Gate::define('access', function (User $user, $request, $model) {
+            $operationList = ["POST" => 'create', "GET" => 'read', "PUT" => 'update', "DELETE" => 'delete', "PATCH" => 'update'];
+            $operator =  $request->method();
+            $operation = $operationList[$operator];
+            return $user->isAuthorized($model, $operation);
+        });
     }
 }

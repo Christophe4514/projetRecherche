@@ -36,12 +36,13 @@
                     </ul>
                 </li>
 
-                {{-- <li
+                @permission('User', 'read')
+                <li
                     class="nav-item has-treeview
-            {{ request()->is('users') ? 'menu-open' : '' }} {{ request()->is('clients') ? 'menu-open' : '' }}
-            ">
+        {{ request()->is('users') ? 'menu-open' : '' }}
+        ">
                     <a href="#" class="nav-link
-                {{ request()->is('users') ? 'active' : '' }} {{ request()->is('clients') ? 'active' : '' }}">
+            {{ request()->is('users') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-folder"></i>
                         <p>
                             Utilisateurs
@@ -57,40 +58,31 @@
                             </a>
                         </li>
                     </ul>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{ route('clients.index') }}"
-                                class="nav-link {{ request()->is('clients') ? 'active' : '' }}">
-                                <i class="far fa-file nav-icon"></i>
-                                <p>Clients</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
 
-                <li
-                    class="nav-item has-treeview {{ request()->is('roles') ? 'menu-open' : '' }}
-            ">
-                    <a href="#"
-                        class="nav-link {{ request()->is('roles') ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-folder"></i>
-                        <p>
-                            Roles
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{ route('roles.index') }}"
-                                class="nav-link {{ request()->is('roles') ? 'active' : '' }}">
-                                <i class="far fa-file nav-icon"></i>
-                                <p>Roles</p>
-                            </a>
-                        </li>
-                    </ul>
                 </li>
-
-                <li
+            @endpermission
+            @permission('Role', 'read')
+            <li class="nav-item has-treeview {{ request()->is('roles') ? 'menu-open' : '' }}
+        ">
+                <a href="#" class="nav-link {{ request()->is('roles') ? 'active' : '' }}">
+                    <i class="nav-icon fas fa-folder"></i>
+                    <p>
+                        Roles
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="{{ route('roles.index') }}"
+                            class="nav-link {{ request()->is('roles') ? 'active' : '' }}">
+                            <i class="far fa-file nav-icon"></i>
+                            <p>Roles</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            @endpermission
+             {{--    <li
                     class="nav-item has-treeview
             {{ request()->is('categories') ? 'menu-open' : '' }}
             ">
