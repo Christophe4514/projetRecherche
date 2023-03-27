@@ -21,7 +21,7 @@ class RoleController extends CustomController
     {
         $roles = Role::all();
 
-        return view('roles.index', compact('roles'));
+        return view('admin.roles.index', compact('roles'));
     }
     /**
      * Show the form for creating a new resource.
@@ -30,7 +30,7 @@ class RoleController extends CustomController
      */
     public function create()
     {
-        return view('roles.create');
+        return view('admin.roles.create');
     }
     /**
      * Store a newly created resource in storage.
@@ -74,7 +74,7 @@ class RoleController extends CustomController
 
         $operations = $this->getAllOperations();
         $models = $this->getAllModels();
-        return view('roles.edit', compact('role', 'operations', 'models'))->with('class', $this);
+        return view('admin.roles.edit', compact('role', 'operations', 'models'))->with('class', $this);
     }
     /**
      * Update the specified resource in storage.

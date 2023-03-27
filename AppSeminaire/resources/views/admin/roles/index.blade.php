@@ -1,6 +1,6 @@
 @extends('admin_layout.admin')
 @section('title')
-    Clients
+    Roles
 @endsection
 
 @section('style')
@@ -17,12 +17,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Utilisateurs</h1>
+                        <h1>Roles</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Utilisateurs</li>
+                            <li class="breadcrumb-item active">Roles</li>
                         </ol>
                     </div>
                 </div>
@@ -36,18 +36,20 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">Tous les utilisateurs</h3>
+                                <h3 class="card-title">All Roles</h3>
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="float-sm-right">
-                                                <a href="#" class="btn btn-success" style="color:white" data-toggle="modal" data-target="#ModalCreate">
-                                                    <span style="color:white"></span> {{ __('Ajouter') }}
-                                                </a>
-                                                @include('users.modal.create')
+                                            <a href="#" class="btn btn-success" style="color:white"
+                                                data-toggle="modal" data-target="#ModalCreate">
+                                                <span style="color:white"></span> {{ __('Ajouter') }}
+                                            </a>
+                                            @include('admin.roles.modal.create')
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
 
                             @if (Session::has('status'))
                                 <div class="alert alert-success">
@@ -61,42 +63,28 @@
                                     <thead>
                                         <tr>
                                             <th>Num.</th>
-                                            <th>{{ __('Name') }}</th>
-                                            <th>Email</th>
-                                            <th>{{ __('Role') }}</th>
+                                            <th>Name</th>
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($users as $key => $user)
+                                        @foreach ($roles as $key => $role)
                                             <tr>
                                                 <td>{{ $key + 1 }}</td>
-                                                <td>{{ $user->name }}</td>
-                                                <td>{{ $user->email }}</td>
-                                                <td>{{ $user->getRolesUser() }}</td>
+                                                <td>{{ $role->name }}</td>
                                                 <td>
-                                                    <a class="btn btn-secondary" data-toggle="modal"
-                                                        data-target="#ModalShow{{ $user->id }}" href="#"><i
-                                                            class="nav-icon fas fa-file"></i></a>
-                                                    <a class="btn btn-primary" href="#" data-toggle="modal"
-                                                        data-target="#ModalEdit{{ $user->id }}"><i
-                                                            class="nav-icon fas fa-edit"></i></a>
-                                                    <a href="#" class="btn btn-danger" data-toggle="modal"
-                                                        data-target="#ModalDelete{{ $user->id }}" id="delete"><i
-                                                            class="nav-icon fas fa-trash"></i></a>
-                                                    @include('users.modal.edit')
-                                                    @include('users.modal.delete')
+                                                    <a href="{{ route('roles.edit', $role->id) }}"
+                                                        class="btn btn-primary"><i class="nav-icon fas fa-edit"></i></a>
+                                                    <a href="{{ route('roles.destroy', $role->id) }}" id="delete"
+                                                        class="btn btn-danger"><i class="nav-icon fas fa-trash"></i></a>
                                                 </td>
-                                                @include('users.modal.show')
                                             </tr>
                                         @endforeach
                                     </tbody>
                                     <tfoot>
                                         <tr>
                                             <th>Num.</th>
-                                            <th>{{ __('Name') }}</th>
-                                            <th>Email</th>
-                                            <th>{{ __('Role') }}</th>
+                                            <th>name</th>
                                             <th>Actions</th>
                                         </tr>
                                     </tfoot>
@@ -132,7 +120,7 @@
     <script src="backend/dist/js/bootbox.min.js"></script>
     <!-- page script -->
 
-    {{-- <script>
+    <script>
         $(document).on("click", "#delete", function(e) {
             e.preventDefault();
             var link = $(this).attr("href");
@@ -142,7 +130,7 @@
                 };
             });
         });
-    </script> --}}
+    </script>
     <!-- page script -->
     <script>
         $(function() {

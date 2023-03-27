@@ -18,7 +18,7 @@ public function index(Request $request)
     {
         $roles = Role::pluck('name','id')->all();
         $users = User::all();
-        return view('users.index',compact('users', 'roles'))
+        return view('admin.users.index',compact('users', 'roles'))
             ->with('i', ($request->input('page', 1) - 1) * 5);
     }
 /**
@@ -29,7 +29,7 @@ public function index(Request $request)
     public function create()
     {
         $roles = Role::pluck('name','name')->all();
-        return view('users.create',compact('roles'));
+        return view('admin.users.create',compact('roles'));
     }
 /**
      * Store a newly created resource in storage.
@@ -56,7 +56,7 @@ public function index(Request $request)
         $user->save();
         $user->assignRole($request->input('roles'));
         //$user->groups()->attach($group->id);
-        return redirect()->route('users.index')
+        return redirect()->route('admin.users.index')
                         ->with('status','Utilisateur créé avec succès');
     }
 /**
@@ -68,7 +68,7 @@ public function index(Request $request)
     public function show($id)
     {
         $user = User::find($id);
-        return view('users.show',compact('user'));
+        return view('admin.users.show',compact('user'));
     }
 /**
      * Show the form for editing the specified resource.
@@ -82,7 +82,7 @@ public function index(Request $request)
         $roles = Role::pluck('name','name')->all();
         $userRole = $user->roles->pluck('name','name')->all();
 
-        return view('users.edit',compact('user','roles','userRole'));
+        return view('admin.users.edit',compact('user','roles','userRole'));
     }
 /**
      * Update the specified resource in storage.

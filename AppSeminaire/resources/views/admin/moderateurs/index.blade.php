@@ -1,6 +1,6 @@
 @extends('admin_layout.admin')
 @section('title')
-    Roles
+    Moderateurs
 @endsection
 
 @section('style')
@@ -17,12 +17,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Roles</h1>
+                        <h1>Moderateurs</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Roles</li>
+                            <li class="breadcrumb-item active">Moderateurs</li>
                         </ol>
                     </div>
                 </div>
@@ -36,7 +36,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">All Roles</h3>
+                                <h3 class="card-title">Tous les utilisateurs</h3>
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="float-sm-right">
@@ -44,12 +44,11 @@
                                                 data-toggle="modal" data-target="#ModalCreate">
                                                 <span style="color:white"></span> {{ __('Ajouter') }}
                                             </a>
-                                            @include('roles.modal.create')
+                                            @include('admin.moderateurs.modal.create')
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
 
                             @if (Session::has('status'))
                                 <div class="alert alert-success">
@@ -63,28 +62,53 @@
                                     <thead>
                                         <tr>
                                             <th>Num.</th>
-                                            <th>Name</th>
+                                            <th>{{ __('Nom') }}</th>
+                                            <th>Postnom</th>
+                                            <th>Prénom</th>
+                                            <th>grade</th>
+                                            <th>image</th>
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($roles as $key => $role)
+                                        @foreach ($moderateurs as $key => $moderateur)
                                             <tr>
                                                 <td>{{ $key + 1 }}</td>
-                                                <td>{{ $role->name }}</td>
+                                                <td>{{ $moderateur->nom }}</td>
+                                                <td>{{ $moderateur->postnom }}</td>
+                                                <td>{{ $moderateur->prenom }}</td>
+                                                <td>{{ $moderateur->grade }}</td>
                                                 <td>
-                                                    <a href="{{ route('roles.edit', $role->id) }}"
-                                                        class="btn btn-primary"><i class="nav-icon fas fa-edit"></i></a>
-                                                    <a href="{{ route('roles.destroy', $role->id) }}" id="delete"
-                                                        class="btn btn-danger"><i class="nav-icon fas fa-trash"></i></a>
+
+                                                    <img src="storage/moderateur_images/{{ $moderateur->photo }}"
+                                                        style="height : 50px; width : 50px" class="img-circle elevation-2"
+                                                        alt="moderateur Image">
                                                 </td>
+                                                <td>
+                                                    <a class="btn btn-secondary" data-toggle="modal"
+                                                        data-target="#ModalShow{{ $moderateur->id }}" href="#"><i
+                                                            class="nav-icon fas fa-file"></i></a>
+                                                    <a class="btn btn-primary" href="#" data-toggle="modal"
+                                                        data-target="#ModalEdit{{ $moderateur->id }}"><i
+                                                            class="nav-icon fas fa-edit"></i></a>
+                                                    <a href="#" class="btn btn-danger" data-toggle="modal"
+                                                        data-target="#ModalDelete{{ $moderateur->id }}" id="delete"><i
+                                                            class="nav-icon fas fa-trash"></i></a>
+                                                    @include('admin.moderateurs.modal.edit')
+                                                    @include('admin.moderateurs.modal.delete')
+                                                </td>
+                                                @include('admin.moderateurs.modal.show')
                                             </tr>
                                         @endforeach
                                     </tbody>
                                     <tfoot>
                                         <tr>
                                             <th>Num.</th>
-                                            <th>name</th>
+                                            <th>{{ __('Nom') }}</th>
+                                            <th>Postnom</th>
+                                            <th>Prénom</th>
+                                            <th>grade</th>
+                                            <th>image</th>
                                             <th>Actions</th>
                                         </tr>
                                     </tfoot>
@@ -120,7 +144,7 @@
     <script src="backend/dist/js/bootbox.min.js"></script>
     <!-- page script -->
 
-    <script>
+    {{-- <script>
         $(document).on("click", "#delete", function(e) {
             e.preventDefault();
             var link = $(this).attr("href");
@@ -130,7 +154,7 @@
                 };
             });
         });
-    </script>
+    </script> --}}
     <!-- page script -->
     <script>
         $(function() {
