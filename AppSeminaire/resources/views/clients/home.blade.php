@@ -19,10 +19,10 @@
         <ul>
           <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
           <li><a class="nav-link scrollto" href="#about">About</a></li>
-          <li><a class="nav-link scrollto" href="#speakers">Speakers</a></li>
-          <li><a class="nav-link scrollto" href="#schedule">Schedule</a></li>
-          <li><a class="nav-link scrollto" href="#venue">Venue</a></li>
-          <li><a class="nav-link scrollto" href="#gallery">Gallery</a></li>
+          <li><a class="nav-link scrollto" href="#speakers">Conferencier</a></li>
+          <li><a class="nav-link scrollto" href="#schedule">Calendrier</a></li>
+          <li><a class="nav-link scrollto" href="#venue">Lieu</a></li>
+          <li><a class="nav-link scrollto" href="#gallery">Gallerie</a></li>
           <li><a class="nav-link scrollto" href="#supporters">Sponsors</a></li>
           <!-- <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
           <ul>
