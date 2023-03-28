@@ -47,8 +47,8 @@ class SeminaireController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'heure_debut' => 'required',
-            'heure_fin' => 'required',
+            'heure_debut' => 'required|max:6',
+            'heure_fin' => 'required|max:6',
             'lieu' => 'required',
             'num_jour' => 'required',
             'jour' => 'required',
@@ -115,8 +115,8 @@ class SeminaireController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'heure_debut' => 'required',
-            'heure_fin' => 'required',
+            'heure_debut' => 'required|max:6',
+            'heure_fin' => 'required|max:6',
             'lieu' => 'required',
             'num_jour' => 'required',
             'jour' => 'required',

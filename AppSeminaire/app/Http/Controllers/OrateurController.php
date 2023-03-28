@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Moderateur;
+use App\Models\Orateur;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
-class ModerateurController extends Controller
+class OrateurController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,14 +15,13 @@ class ModerateurController extends Controller
      */
     public function index()
     {
-        //
-        $moderateurs = Moderateur::all();
+        $orateurs = Orateur::all();
         $grades = ['professeur',
                     'apprenant',
                     'doctorant',
                     'chercheur',
                   ];
-        return view('admin.moderateurs.index', compact('moderateurs','grades'));
+        return view('admin.orateurs.index', compact('orateurs','grades'));
     }
 
     /**
@@ -44,6 +43,8 @@ class ModerateurController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
+            'email' => 'required|email|unique:orateurs',
+            'password' => 'required|min:6|same:confirm-password',
             'nom' => 'required',
             'postnom' => 'required',
             'prenom' => 'required',
@@ -61,21 +62,23 @@ class ModerateurController extends Controller
             //nom de l'image to store
             $fileNameToStrore = $filename . '_' . time() . '.' . $ext;
             //upload image et creation du dossier de stockage
-            $path = $request->file('photo')->storeAs('public/moderateur_images', $fileNameToStrore);
+            $path = $request->file('photo')->storeAs('public/orateur_images', $fileNameToStrore);
         } else {
             $fileNameToStrore = 'noimage.jpg';
         }
 
 
-        $moderateur = new Moderateur();
-        $moderateur->nom = $request->input('nom');
-        $moderateur->postnom = $request->input('postnom');
-        $moderateur->prenom = $request->input('prenom');
-        $moderateur->grade = $request->input('grade');
-        $moderateur->photo = $fileNameToStrore;
+        $orateur = new Orateur();
+        $orateur->nom = $request->input('nom');
+        $orateur->postnom = $request->input('postnom');
+        $orateur->prenom = $request->input('prenom');
+        $orateur->email = $request->input('email');
+        $orateur->password = bcrypt($request->input('password'));
+        $orateur->grade = $request->input('grade');
+        $orateur->photo = $fileNameToStrore;
 
-        $moderateur->save();
-        return back()->with('status', 'Le modérateur a été enregistré avec succès !!');
+        $orateur->save();
+        return back()->with('status', 'L\'orateur a été enregistré avec succès !!');
     }
 
     /**
@@ -110,6 +113,8 @@ class ModerateurController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
+            'email' => 'required|email|unique:orateurs,email,'.$id,
+            'password' => 'same:confirm-password',
             'nom' => 'required',
             'postnom' => 'required',
             'prenom' => 'required',
@@ -117,11 +122,16 @@ class ModerateurController extends Controller
             'photo' => 'image|nullable|max:5999'
         ]);
 
-        $moderateur = Moderateur::find($id);
-        $moderateur->nom = $request->input('nom');
-        $moderateur->postnom = $request->input('postnom');
-        $moderateur->prenom = $request->input('prenom');
-        $moderateur->grade = $request->input('grade');
+        $orateur = Orateur::find($id);
+        $orateur->nom = $request->input('nom');
+        $orateur->postnom = $request->input('postnom');
+        $orateur->prenom = $request->input('prenom');
+        $orateur->email = $request->input('email');
+        $orateur->grade = $request->input('grade');
+
+        if(!empty($request->input('password'))){
+            $orateur->password = bcrypt($request->input('password'));
+        }
 
         if ($request->hasFile('photo')) {
             //nom de l'image avec extension
@@ -133,18 +143,18 @@ class ModerateurController extends Controller
             //nom de l'image to store
             $fileNameToStrore = $filename . '_' . time() . '.' . $ext;
             //upload image et creation du dossier de stockage
-            $path = $request->file('photo')->storeAs('public/moderateur_images', $fileNameToStrore);
+            $path = $request->file('photo')->storeAs('public/orateur_images', $fileNameToStrore);
 
-            if ($moderateur->moderateur_image != 'noimage.jpg') {
-                Storage::delete('public/moderateur_images/' . $moderateur->photo);
+            if ($orateur->orateur_image != 'noimage.jpg') {
+                Storage::delete('public/orateur_images/' . $orateur->photo);
             }
 
-            $moderateur->photo = $fileNameToStrore;
+            $orateur->photo = $fileNameToStrore;
         }
 
-        $moderateur->update();
+        $orateur->update();
 
-        return back()->with('status', 'Le modérateur a été modifié avec succès !!');
+        return back()->with('status', 'L\'orateur a été modifié avec succès !!');
     }
 
     /**
@@ -155,14 +165,14 @@ class ModerateurController extends Controller
      */
     public function destroy($id)
     {
-        $moderateur = moderateur::find($id);
+        $orateur = orateur::find($id);
 
-        if ($moderateur->photo != 'noimage.jpg') {
-            Storage::delete('public/moderateur_images/' . $moderateur->photo);
+        if ($orateur->photo != 'noimage.jpg') {
+            Storage::delete('public/orateur_images/' . $orateur->photo);
         }
 
-        $moderateur->delete();
+        $orateur->delete();
 
-        return back()->with('status', 'Le modérateur a été supprimé avec succès !!');
+        return back()->with('status', 'L\'orateur a été supprimé avec succès !!');
     }
 }

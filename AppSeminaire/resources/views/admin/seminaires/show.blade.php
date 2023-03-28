@@ -22,7 +22,7 @@
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item"><a href="{{route('seminaires.index')}}">Séminaires</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('seminaires.index') }}">Séminaires</a></li>
                             <li class="breadcrumb-item active">Détails du séminaire</li>
                         </ol>
                     </div>
@@ -33,12 +33,19 @@
         <section class="content">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-4">
+                    <div class="col-6">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">Heure et Lieu</h3>
+                                <h3 class="card-title">Date et Lieu</h3>
                             </div>
                             <div class="card-body">
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <div class="form-group">
+                                        <strong>{{ __('Séminaire du ') }}:</strong>
+                                        {{ $seminaire->jour }},
+                                        {{ $seminaire->num_jour }}/{{ $seminaire->mois }}/{{ $seminaire->annee }}
+                                    </div>
+                                </div>
                                 <div class="col-xs-12 col-sm-12 col-md-12">
                                     <div class="form-group">
                                         <strong>{{ __('Heure du début') }}:</strong>
@@ -61,59 +68,47 @@
                         </div>
                     </div>
                     <!-- /.col -->
-                    <div class="col-4">
-                        <div class="card">
-                            <div class="card-header">
-                                <h3 class="card-title">Date</h3>
-                            </div>
-                            <div class="card-body">
-                                <div class="col-xs-12 col-sm-12 col-md-12">
-                                    <div class="form-group">
-                                        <strong>{{ __('Séminaire du ') }}:</strong>
-                                        {{ $seminaire->jour }},
-                                        {{ $seminaire->num_jour }}/{{ $seminaire->mois }}/{{ $seminaire->annee }}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /.col -->
-                    <div class="col-4">
+                    <div class="col-6">
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="card-title">Modérateur</h3>
                             </div>
                             <div class="card-body">
-                                <div class="col-xs-12 col-sm-12 col-md-12">
-                                    <div class="form-group">
-                                        <strong>{{ __('Nom') }}:</strong>
-                                        {{ $seminaire->moderateur->nom }}
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="col-xs-12 col-sm-12 col-md-12">
+                                            <div class="form-group">
+                                                <strong>{{ __('Nom') }}:</strong>
+                                                {{ $seminaire->moderateur->nom }}
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-12 col-md-12">
+                                            <div class="form-group">
+                                                <strong>{{ __('Postnom') }}:</strong>
+                                                {{ $seminaire->moderateur->postnom }}
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-12 col-md-12">
+                                            <div class="form-group">
+                                                <strong>{{ __('Prénom') }}:</strong>
+                                                {{ $seminaire->moderateur->prenom }}
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-12 col-md-12">
+                                            <div class="form-group">
+                                                <strong>{{ __('Grade') }}:</strong>
+                                                {{ $seminaire->moderateur->grade }}
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-xs-12 col-sm-12 col-md-12">
-                                    <div class="form-group">
-                                        <strong>{{ __('Postnom') }}:</strong>
-                                        {{ $seminaire->moderateur->postnom }}
-                                    </div>
-                                </div>
-                                <div class="col-xs-12 col-sm-12 col-md-12">
-                                    <div class="form-group">
-                                        <strong>{{ __('Prénom') }}:</strong>
-                                        {{ $seminaire->moderateur->prenom }}
-                                    </div>
-                                </div>
-                                <div class="col-xs-12 col-sm-12 col-md-12">
-                                    <div class="form-group">
-                                        <strong>{{ __('Grade') }}:</strong>
-                                        {{ $seminaire->moderateur->grade }}
-                                    </div>
-                                </div>
-                                <div class="col-xs-12 col-sm-12 col-md-12">
-                                    <div class="form-group">
-                                        <strong>{{ __('Photo') }}:</strong><br>
-                                        <img src="{{asset('storage/moderateur_images/'.$seminaire->moderateur->photo)}}"
-                                            style="height : 100px; width : 100px" class="img-square elevation-2"
-                                            alt="moderateur Image">
+                                    <div class="col-6">
+                                        <div class="col-xs-12 col-sm-12 col-md-12">
+                                            <div class="form-group">
+                                                <img src="{{ asset('storage/moderateur_images/' . $seminaire->moderateur->photo) }}"
+                                                    style="height : 200px; width : 200px" class="img-square elevation-2"
+                                                    alt="moderateur Image">
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

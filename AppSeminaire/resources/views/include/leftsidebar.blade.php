@@ -135,46 +135,35 @@
                                     <a href="{{ route('seminaires.create') }}"
                                         class="nav-link {{ request()->is('seminaires/create') ? 'active' : '' }}">
                                         <i class="far fa-file nav-icon"></i>
-                                        <p>Créer un service</p>
+                                        <p>Créer un séminaire</p>
                                     </a>
                                 </li>
                             </ul>
                         @endpermission
                     </li>
                 @endpermission
-                {{--     <li
-                    class="nav-item has-treeview {{ request()->is('addslider') ? 'menu-open' : '' }}
-            {{ request()->is('sliders') ? 'menu-open' : '' }}">
+                    <li
+                    class="nav-item has-treeview {{ request()->is('orateurs') ? 'menu-open' : '' }}">
                     <a href="#"
-                        class="nav-link {{ request()->is('addslider') ? 'active' : '' }}
-                {{ request()->is('sliders') ? 'active' : '' }}">
+                        class="nav-link {{ request()->is('orateurs') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-folder"></i>
                         <p>
-                            Sliders
+                            Orateurs
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ url('/addslider') }}"
-                                class="nav-link {{ request()->is('addslider') ? 'active' : '' }}">
+                            <a href="{{ route('orateurs.index') }}"
+                                class="nav-link {{ request()->is('orateurs') ? 'active' : '' }}">
                                 <i class="far fa-file nav-icon"></i>
-                                <p>Add slider</p>
-                            </a>
-                        </li>
-                    </ul>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{ url('/sliders') }}"
-                                class="nav-link {{ request()->is('sliders') ? 'active' : '' }}">
-                                <i class="far fa-file nav-icon"></i>
-                                <p>Sliders</p>
+                                <p>Orateurs</p>
                             </a>
                         </li>
                     </ul>
                 </li>
 
-                <li
+             {{--    <li
                     class="nav-item has-treeview {{ request()->is('addproduct') ? 'menu-open' : '' }}
             {{ request()->is('products') ? 'menu-open' : '' }}">
                     <a href="#"
