@@ -14,12 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::group(['middleware' => ['auth']], function() {
+    require_once('user_routes.php');
+    Route::get('/admin',[App\Http\Controllers\AdminController::class,'dashboard']);
+    });
 
 Auth::routes();
-Route::get('/admin',[App\Http\Controllers\AdminController::class,'dashboard']);
-require_once('user_routes.php');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

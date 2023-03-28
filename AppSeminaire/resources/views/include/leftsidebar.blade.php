@@ -37,101 +37,112 @@
                 </li>
 
                 @permission('User', 'read')
-                <li
-                    class="nav-item has-treeview
+                    <li class="nav-item has-treeview
         {{ request()->is('users') ? 'menu-open' : '' }}
         ">
-                    <a href="#" class="nav-link
+                        <a href="#" class="nav-link
             {{ request()->is('users') ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-folder"></i>
-                        <p>
-                            Utilisateurs
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{ route('users.index') }}"
-                                class="nav-link {{ request()->is('users') ? 'active' : '' }}">
-                                <i class="far fa-file nav-icon"></i>
-                                <p>Administrateurs</p>
-                            </a>
-                        </li>
-                    </ul>
-
-                </li>
-            @endpermission
-            @permission('Role', 'read')
-            <li class="nav-item has-treeview {{ request()->is('roles') ? 'menu-open' : '' }}
-        ">
-                <a href="#" class="nav-link {{ request()->is('roles') ? 'active' : '' }}">
-                    <i class="nav-icon fas fa-folder"></i>
-                    <p>
-                        Roles
-                        <i class="fas fa-angle-left right"></i>
-                    </p>
-                </a>
-                <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                        <a href="{{ route('roles.index') }}"
-                            class="nav-link {{ request()->is('roles') ? 'active' : '' }}">
-                            <i class="far fa-file nav-icon"></i>
-                            <p>Roles</p>
+                            <i class="nav-icon fas fa-folder"></i>
+                            <p>
+                                Utilisateurs
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
                         </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ route('users.index') }}"
+                                    class="nav-link {{ request()->is('users') ? 'active' : '' }}">
+                                    <i class="far fa-file nav-icon"></i>
+                                    <p>Administrateurs</p>
+                                </a>
+                            </li>
+                        </ul>
+
                     </li>
-                </ul>
-            </li>
-            @endpermission
-            @permission('Moderateur', 'read')
-                <li
-                    class="nav-item has-treeview
+                @endpermission
+                @permission('Role', 'read')
+                    <li class="nav-item has-treeview {{ request()->is('roles') ? 'menu-open' : '' }}
+        ">
+                        <a href="#" class="nav-link {{ request()->is('roles') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-folder"></i>
+                            <p>
+                                Roles
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ route('roles.index') }}"
+                                    class="nav-link {{ request()->is('roles') ? 'active' : '' }}">
+                                    <i class="far fa-file nav-icon"></i>
+                                    <p>Roles</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                @endpermission
+                @permission('Moderateur', 'read')
+                    <li
+                        class="nav-item has-treeview
         {{ request()->is('moderateurs') ? 'menu-open' : '' }}
         ">
-                    <a href="#" class="nav-link
+                        <a href="#" class="nav-link
             {{ request()->is('moderateurs') ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-folder"></i>
-                        <p>
-                            Moderateurs
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{ route('moderateurs.index') }}"
-                                class="nav-link {{ request()->is('moderateurs') ? 'active' : '' }}">
-                                <i class="far fa-file nav-icon"></i>
-                                <p>Moderateurs</p>
-                            </a>
-                        </li>
-                    </ul>
+                            <i class="nav-icon fas fa-folder"></i>
+                            <p>
+                                Moderateurs
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ route('moderateurs.index') }}"
+                                    class="nav-link {{ request()->is('moderateurs') ? 'active' : '' }}">
+                                    <i class="far fa-file nav-icon"></i>
+                                    <p>Moderateurs</p>
+                                </a>
+                            </li>
+                        </ul>
 
-                </li>
-            @endpermission
-             {{--    <li
-                    class="nav-item has-treeview
-            {{ request()->is('categories') ? 'menu-open' : '' }}
+                    </li>
+                @endpermission
+                @permission('Seminaire', 'create')
+                    <li
+                        class="nav-item has-treeview
+            {{ request()->is('seminaires') ? 'menu-open' : '' }}{{ request()->is('seminaires/create') ? 'menu-open' : '' }}
             ">
-                    <a href="#"
-                        class="nav-link
-                {{ request()->is('categories') ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-folder"></i>
-                        <p>
-                            Categories
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{ url('/categories') }}"
-                                class="nav-link {{ request()->is('categories') ? 'active' : '' }}">
-                                <i class="far fa-file nav-icon"></i>
-                                <p>Categories</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li
+                        <a href="#"
+                            class="nav-link
+                {{ request()->is('seminaires') ? 'active' : '' }}{{ request()->is('seminaires/create') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-folder"></i>
+                            <p>
+                                Séminaires
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ route('seminaires.index') }}"
+                                    class="nav-link {{ request()->is('seminaires') ? 'active' : '' }}">
+                                    <i class="far fa-file nav-icon"></i>
+                                    <p>Séminaires</p>
+                                </a>
+                            </li>
+                        </ul>
+                        @permission('Seminaire', 'create')
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('seminaires.create') }}"
+                                        class="nav-link {{ request()->is('seminaires/create') ? 'active' : '' }}">
+                                        <i class="far fa-file nav-icon"></i>
+                                        <p>Créer un service</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        @endpermission
+                    </li>
+                @endpermission
+                {{--     <li
                     class="nav-item has-treeview {{ request()->is('addslider') ? 'menu-open' : '' }}
             {{ request()->is('sliders') ? 'menu-open' : '' }}">
                     <a href="#"

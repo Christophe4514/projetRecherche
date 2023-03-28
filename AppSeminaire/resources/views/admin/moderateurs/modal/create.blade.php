@@ -30,7 +30,12 @@
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     {{ Form::label('', 'Grade') }}
-                    {{ Form::select('grade', $grades, null, ['placeholder' => 'Select grade', 'class' => 'form-control select2']) }}
+                    <select name="grade" id="grade" class="form-control select2"
+                        placeholder="Selectionner le grade">
+                        @foreach ($grades as $item)
+                            <option value="{{ $item }}">{{ $item }}</option>
+                        @endforeach
+                    </select>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     {{ Form::label('', 'Photo', [
