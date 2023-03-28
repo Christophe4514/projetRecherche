@@ -1,12 +1,12 @@
 @extends('admin_layout.admin')
 @section('title')
-    Orateurs
+    Thèmes
 @endsection
 
 @section('style')
     <!-- DataTables -->
-    <link rel="stylesheet" href="backend/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="backend/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="{{asset('backend/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
+    <link rel="stylesheet" href="{{asset('backend/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
 @endsection
 
 @section('content')
@@ -17,12 +17,13 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Orateurs</h1>
+                        <h1>Thèmes</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Orateurs</li>
+                            <li class="breadcrumb-item"><a href="{{route('orateurs.index')}}">Orateurs</a></li>
+                            <li class="breadcrumb-item active">Thèmes</li>
                         </ol>
                     </div>
                 </div>
@@ -36,7 +37,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">Tous les orateurs</h3>
+                                <h3 class="card-title">Tous les thèmes</h3>
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="float-sm-right">
@@ -44,11 +45,12 @@
                                                 data-toggle="modal" data-target="#ModalCreate">
                                                 <span style="color:white"></span> {{ __('Ajouter') }}
                                             </a>
-                                            @include('admin.orateurs.modal.create')
+                                            @include('admin.themes.modal.create')
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <br>
                             @if (count($errors) > 0)
                             <div class="alert alert-danger">
                                 <ul>
@@ -71,54 +73,39 @@
                                     <thead>
                                         <tr>
                                             <th>Num.</th>
-                                            <th>{{ __('Nom') }}</th>
-                                            <th>Postnom</th>
-                                            <th>Prénom</th>
-                                            <th>grade</th>
-                                            <th>image</th>
+                                            <th>{{ __('Sujet') }}</th>
+                                            <th>Problématique</th>
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($orateurs as $key => $orateur)
+                                        @foreach ($orateur->themes as $key => $theme)
                                             <tr>
                                                 <td>{{ $key + 1 }}</td>
-                                                <td>{{ $orateur->nom }}</td>
-                                                <td>{{ $orateur->postnom }}</td>
-                                                <td>{{ $orateur->prenom }}</td>
-                                                <td>{{ $orateur->grade }}</td>
+                                                <td>{{ $theme->sujet }}</td>
+                                                <td>{{ $theme->problematique }}</td>
                                                 <td>
-
-                                                    <img src="storage/orateur_images/{{ $orateur->photo }}"
-                                                        style="height : 50px; width : 50px" class="img-circle elevation-2"
-                                                        alt="orateur Image">
-                                                </td>
-                                                <td>
-                                                    <a href="{{ route('orateurs.show',$orateur->id) }}" class="btn btn-warning">Thèmes</a>
                                                     <a class="btn btn-secondary" data-toggle="modal"
-                                                        data-target="#ModalShow{{ $orateur->id }}" href="#"><i
+                                                        data-target="#ModalShow{{ $theme->id }}" href="#"><i
                                                             class="nav-icon fas fa-file"></i></a>
                                                     <a class="btn btn-primary" href="#" data-toggle="modal"
-                                                        data-target="#ModalEdit{{ $orateur->id }}"><i
+                                                        data-target="#ModalEdit{{ $theme->id }}"><i
                                                             class="nav-icon fas fa-edit"></i></a>
                                                     <a href="#" class="btn btn-danger" data-toggle="modal"
-                                                        data-target="#ModalDelete{{ $orateur->id }}" id="delete"><i
+                                                        data-target="#ModalDelete{{ $theme->id }}" id="delete"><i
                                                             class="nav-icon fas fa-trash"></i></a>
-                                                    @include('admin.orateurs.modal.edit')
-                                                    @include('admin.orateurs.modal.delete')
+                                                    @include('admin.themes.modal.edit')
+                                                    @include('admin.themes.modal.delete')
                                                 </td>
-                                                @include('admin.orateurs.modal.show')
+                                                @include('admin.themes.modal.show')
                                             </tr>
                                         @endforeach
                                     </tbody>
                                     <tfoot>
                                         <tr>
                                             <th>Num.</th>
-                                            <th>{{ __('Nom') }}</th>
-                                            <th>Postnom</th>
-                                            <th>Prénom</th>
-                                            <th>grade</th>
-                                            <th>image</th>
+                                            <th>{{ __('Sujet') }}</th>
+                                            <th>Problématique</th>
                                             <th>Actions</th>
                                         </tr>
                                     </tfoot>
@@ -145,27 +132,11 @@
 
 @section('scripts')
     <!-- DataTables -->
-    <script src="backend/plugins/datatables/jquery.dataTables.min.js"></script>
-    <script src="backend/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-    <script src="backend/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-    <script src="backend/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-
-
-    <script src="backend/dist/js/bootbox.min.js"></script>
-    <!-- page script -->
-
-    {{-- <script>
-        $(document).on("click", "#delete", function(e) {
-            e.preventDefault();
-            var link = $(this).attr("href");
-            bootbox.confirm("Do you really want to delete this element ?", function(confirmed) {
-                if (confirmed) {
-                    window.location.href = link;
-                };
-            });
-        });
-    </script> --}}
-    <!-- page script -->
+    <script src="{{asset('backend/plugins/datatables/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('backend/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
+    <script src="{{asset('backend/plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
+    <script src="{{asset('backend/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
+    <script src="{{asset('backend/dist/js/bootbox.min.js')}}"></script>
     <script>
         $(function() {
             $("#example1").DataTable({

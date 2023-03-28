@@ -14,4 +14,9 @@ class Orateur extends Model
         'email',
         'password',
     ];
+
+    public function themes()
+    {
+        return $this->hasMany(Theme::class, 'orateur_id', 'id');
+    }
 }

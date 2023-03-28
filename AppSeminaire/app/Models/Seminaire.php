@@ -13,4 +13,8 @@ class Seminaire extends Model
     {
         return $this->belongsTo(Moderateur::class, 'moderateur_id', 'id');
     }
+    public function interventions()
+    {
+        return $this->hasMany(Intervations::class, 'seminaire_id', 'id');
+    }
 }

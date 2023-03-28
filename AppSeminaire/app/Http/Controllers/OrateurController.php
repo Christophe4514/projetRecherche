@@ -89,7 +89,11 @@ class OrateurController extends Controller
      */
     public function show($id)
     {
-        //
+        $orateur = Orateur::find($id);
+
+        $statuts = ['en attente','non valide','valide'];
+
+        return view('admin.themes.index', compact('orateur','statuts'));
     }
 
     /**

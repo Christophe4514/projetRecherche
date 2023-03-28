@@ -1,8 +1,8 @@
-<div class="modal fade" id="ModalShow{{ $orateur->id }}">
+<div class="modal fade" id="ModalShow{{ $theme->id }}">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Détails de l'orateur</h4>
+                <h4 class="modal-title">Détails du thème</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -12,41 +12,48 @@
                     <div class="col-6">
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
-                                <strong>{{ __('Nom') }}:</strong>
-                                {{ $orateur->nom }}
+                                <strong>{{ __('Sujet') }}:</strong><br>
+                                {{ $theme->sujet }}
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
-                                <strong>{{ __('Postnom') }}:</strong>
-                                {{ $orateur->postnom }}
+                                <strong>{{ __('Domaine de recherche') }}:</strong><br>
+                                {{ $theme->domaine_recherche }}
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
-                                <strong>{{ __('Prénom') }}:</strong>
-                                {{ $orateur->prenom }}
+                                <strong>{{ __('Objectif et Motivation du travail') }}:</strong><br>
+                                {{ $theme->objectif }}
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
-                                <strong>{{ __('Email') }}:</strong>
-                                {{ $orateur->email }}
+                                <strong>{{ __('Méthodologie de travail') }}:</strong><br>
+                                {{ $theme->methode_travail }}
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
-                                <strong>{{ __('Grade') }}:</strong>
-                                {{ $orateur->grade }}
+                                <strong>{{ __('Cas') }}:</strong><br>
+                                {{ $theme->cas }}
                             </div>
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
-                                <img src="{{ asset('storage/orateur_images/' . $orateur->photo) }}"
-                                    style="height : 200px; width : 200px" class="img-square elevation-2"
-                                    alt="moderateur Image">
+                                <strong>{{ __('Problématique') }}:</strong><br>
+                                {{ $theme->problematique}}
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
+                                    <strong>{{ __('Statut') }}:</strong><br>
+                                    {{ $theme->status}}
+                                </div>
                             </div>
                         </div>
                     </div>
