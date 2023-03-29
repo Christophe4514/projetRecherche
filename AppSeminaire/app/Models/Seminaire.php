@@ -15,6 +15,6 @@ class Seminaire extends Model
     }
     public function interventions()
     {
-        return $this->hasMany(Intervations::class, 'seminaire_id', 'id');
+        return $this->hasMany(Intervation::class, 'seminaire_id', 'id');
     }
 }

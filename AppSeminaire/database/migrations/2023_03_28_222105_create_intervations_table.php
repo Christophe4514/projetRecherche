@@ -15,8 +15,8 @@ class CreateIntervationsTable extends Migration
     {
         Schema::create('intervations', function (Blueprint $table) {
             $table->id();
-            $table->string('heure_debut');
-            $table->string('heure_fin');
+            $table->string('heure_debut_intervention');
+            $table->string('heure_fin_intervention');
             $table->string('num_intervation');
             $table->integer('seminaire_id', false, true);
             $table->integer('theme_id', false, true);

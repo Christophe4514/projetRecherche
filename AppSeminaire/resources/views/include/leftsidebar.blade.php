@@ -3,7 +3,7 @@
     <a href="index.html" class="brand-link">
         <img src="{{ asset('backend/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
             class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light">AdminLTE 3</span>
+        <span class="brand-text font-weight-light">AppSéminaire</span>
     </a>
 
     <!-- Sidebar -->
@@ -162,7 +162,31 @@
                         </li>
                     </ul>
                 </li>
-
+                @permission('Intervation', 'create')
+                <li
+                    class="nav-item has-treeview
+        {{ request()->is('intervations') ? 'menu-open' : '' }}{{ request()->is('intervations/create') ? 'menu-open' : '' }}
+        ">
+                    <a href="#"
+                        class="nav-link
+            {{ request()->is('intervations') ? 'active' : '' }}{{ request()->is('intervations/create') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-folder"></i>
+                        <p>
+                            Interventions
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('intervations.index') }}"
+                                class="nav-link {{ request()->is('intervations') ? 'active' : '' }}">
+                                <i class="far fa-file nav-icon"></i>
+                                <p>Interventions</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            @endpermission
              {{--    <li
                     class="nav-item has-treeview {{ request()->is('addproduct') ? 'menu-open' : '' }}
             {{ request()->is('products') ? 'menu-open' : '' }}">

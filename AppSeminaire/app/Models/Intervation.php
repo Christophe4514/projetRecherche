@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Intervations extends Model
+class Intervation extends Model
 {
     use HasFactory;
 
@@ -15,6 +15,7 @@ class Intervations extends Model
     }
     public function theme()
     {
-        return $this->belongsTo(Moderateur::class, 'theme_id', 'id');
+        return $this->belongsTo(Theme::class, 'theme_id', 'id');
+
     }
 }

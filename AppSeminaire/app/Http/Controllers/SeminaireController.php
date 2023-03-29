@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Moderateur;
 use App\Models\Seminaire;
+use App\Models\Theme;
 use Illuminate\Http\Request;
 
 class SeminaireController extends Controller
@@ -65,6 +66,7 @@ class SeminaireController extends Controller
         $seminaire->mois = $request->input('mois');
         $seminaire->annee = date('Y');
         $seminaire->moderateur_id = $request->input('moderateur');
+        $seminaire->nom = "Séminaire du ".$request->input('jour').", ".$request->input('num_jour')."/".$request->input('mois')."/".date('Y');
 
         $seminaire->save();
 
@@ -81,7 +83,6 @@ class SeminaireController extends Controller
     {
         //
         $seminaire = Seminaire::find($id);
-
         return view('admin.seminaires.show', compact('seminaire'));
     }
 
@@ -133,6 +134,7 @@ class SeminaireController extends Controller
         $seminaire->mois = $request->input('mois');
         $seminaire->annee = date('Y');
         $seminaire->moderateur_id = $request->input('moderateur_id');
+        $seminaire->nom = "Séminaire du ".$request->input('jour')."/".$request->input('num_jour')."/".$request->input('mois')."/".date('Y');
 
         $seminaire->update();
 

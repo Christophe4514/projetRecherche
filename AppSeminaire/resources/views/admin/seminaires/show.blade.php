@@ -114,8 +114,74 @@
                             </div>
                         </div>
                     </div>
-                    {{-- <!-- /.col -->
-                    <div class="col-4">
+                    <!-- /.col -->
+                        @foreach ($seminaire->interventions as $key => $intervention )
+                        <div class="col-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="card-title">Intervention {{$intervention->num_intervation}}</h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="form-group">
+                                            <strong>{{ __('Orateur') }}:</strong>
+                                            {{ $intervention->theme->orateur->grade }} : {{ $intervention->theme->orateur->nom }}
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="form-group">
+                                            <strong>{{ __('Heure du début') }}:</strong>
+                                            {{ $intervention->heure_debut_intervention }}
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="form-group">
+                                            <strong>{{ __('Heure de la fin') }}:</strong>
+                                            {{ $intervention->heure_fin_intervention }}
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="form-group">
+                                            <strong>{{ __('Sujet') }}:</strong>
+                                            {{ $intervention->theme->sujet }}
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="form-group">
+                                            <strong>{{ __('Domaine de recherche') }}:</strong>
+                                            {{ $intervention->theme->domaine_recherche }}
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="form-group">
+                                            <strong>{{ __('Problématique') }}:</strong>
+                                            {{ $intervention->theme->problematique }}
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="form-group">
+                                            <strong>{{ __('Objectif et motivation du travail') }}:</strong>
+                                            {{ $intervention->theme->objectif }}
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="form-group">
+                                            <strong>{{ __('Méthodologie de travail') }}:</strong>
+                                            {{ $intervention->theme->methode_travail }}
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="form-group">
+                                            <strong>{{ __('Cas') }}:</strong>
+                                            {{ $intervention->theme->cas }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.col -->
+                        @endforeach
+                    {{-- <div class="col-4">
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="card-title">Ajouter une intervation</h3>

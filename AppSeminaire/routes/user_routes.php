@@ -8,4 +8,5 @@
     Route::resource('seminaires', App\Http\Controllers\SeminaireController::class)->middleware('access:Seminaire');
     Route::resource('orateurs', App\Http\Controllers\OrateurController::class)->middleware('access:Orateur');
     Route::resource('themes', App\Http\Controllers\ThemeController::class)->middleware('access:Theme');
+    Route::resource('intervations', App\Http\Controllers\IntervationController::class)->middleware('access:Intervation');
 
