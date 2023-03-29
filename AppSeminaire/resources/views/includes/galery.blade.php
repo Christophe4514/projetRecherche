@@ -4,7 +4,7 @@
         <div class="container" data-aos="fade-up">
           <div class="section-header">
             <h2>Gallery</h2>
-            <p>Check our gallery from the recent events</p>
+            <p>visiter notre galerie pour voir en image les précédents évenement</p>
           </div>
         </div>
   

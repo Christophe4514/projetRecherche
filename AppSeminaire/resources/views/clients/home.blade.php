@@ -6,13 +6,13 @@
 
 @section('content')
       <!-- ======= Header ======= -->
-  <header id="header" class="d-flex align-items-center ">
-    <div class="container-fluid container-xxl d-flex align-items-center">
+  <header id="header" class="d-flex align-seminaires-center ">
+    <div class="container-fluid container-xxl d-flex align-seminaires-center">
 
       <div id="logo" class="me-auto">
         <!-- Uncomment below if you prefer to use a text logo -->
         <!-- <h1><a href="index.html">The<span>Event</span></a></h1>-->
-        <a href="index.html" class="scrollto"><img src="{{asset('front-end/img/logo.png') }}" alt="" title=""></a>
+        <a href="index.html" class="scrollto">Fac sce/Seminaires</a>
       </div>
 
       <nav id="navbar" class="navbar order-last order-lg-0">
@@ -23,7 +23,7 @@
           <li><a class="nav-link scrollto" href="#schedule">Calendrier</a></li>
           <li><a class="nav-link scrollto" href="#venue">Lieu</a></li>
           <li><a class="nav-link scrollto" href="#gallery">Gallerie</a></li>
-          <li><a class="nav-link scrollto" href="#supporters">Sponsors</a></li>
+          {{-- <li><a class="nav-link scrollto" href="#supporters">Sponsors</a></li> --}}
           <!-- <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
           <ul>
             <li><a href="#">Drop Down 1</a></li>
@@ -45,7 +45,7 @@
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
-      <a class="buy-tickets scrollto" href="#buy-tickets">Buy Tickets</a>
+      {{-- <a class="buy-tickets scrollto" href="#buy-tickets">Buy Tickets</a> --}}
 
     </div>
   </header><!-- End Header -->
@@ -53,11 +53,13 @@
   <!-- ======= Hero Section ======= -->
   <section id="hero">
     <div class="hero-container" data-aos="zoom-in" data-aos-delay="100">
-      <h1 class="mb-4 pb-0">The Annual<br><span>Marketing</span> Conference</h1>
-      <p class="mb-4 pb-0">10-12 December, Downtown Conference Center, New York</p>
+      <h1 class="mb-4 pb-0">Séminaire du <strong>{{ $seminaire->jour}}, {{$seminaire->num_jour}}/{{$seminaire->mois}}/{{$seminaire->annee}}</strong></h1>
+      <p class="mb-4 pb-0">{{$seminaire->heure_debut}}-{{$seminaire->heure_fin}}, {{$seminaire->lieu}}, Unikin/fac sce</p>
       <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="glightbox play-btn mb-4"></a>
       <a href="#about" class="about-btn scrollto">About The Event</a>
     </div>
+
+    
   </section><!-- End Hero Section -->
 
   <main id="main">
@@ -72,16 +74,16 @@
 
 @include('includes.galery')
 
-@include('includes.sponsors')
+{{-- @include('includes.sponsors') --}}
 
-@include('includes.faq')
+{{-- @include('includes.faq') --}}
 
     <!-- ======= Subscribe Section ======= -->
     <section id="subscribe">
       <div class="container" data-aos="zoom-in">
         <div class="section-header">
           <h2>Newsletter</h2>
-          <p>Rerum numquam illum recusandae quia mollitia consequatur.</p>
+          <p>Abonnez-vous à notre Newsletter pour plus d'actualité.</p>
         </div>
 
         <form method="POST" action="#">
@@ -96,7 +98,7 @@
       </div>
     </section><!-- End Subscribe Section -->
 
-@include('includes.tickets')
+{{-- @include('includes.tickets') --}}
 
 @include('includes.contact')
 
@@ -104,6 +106,6 @@
 
 @include('includes.footer')
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" class="back-to-top d-flex align-seminaires-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
 @endsection

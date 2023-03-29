@@ -4,8 +4,8 @@
         <div class="container-fluid" data-aos="fade-up">
   
           <div class="section-header">
-            <h2>Event Venue</h2>
-            <p>Event venue location info and gallery</p>
+            <h2>Lieu du Séminaire</h2>
+            <p>Information sur le Lieu du séminaire et la Galérie du Lieu</p>
           </div>
   
           <div class="row g-0">
@@ -16,8 +16,8 @@
             <div class="col-lg-6 venue-info">
               <div class="row justify-content-center">
                 <div class="col-11 col-lg-8 position-relative">
-                  <h3>Downtown Conference Center, New York</h3>
-                  <p>Iste nobis eum sapiente sunt enim dolores labore accusantium autem. Cumque beatae ipsam. Est quae sit qui voluptatem corporis velit. Qui maxime accusamus possimus. Consequatur sequi et ea suscipit enim nesciunt quia velit.</p>
+                  <h3>Local B16 fac sce, Unikin</h3>
+                  {{-- <p>Iste nobis eum sapiente sunt enim dolores labore accusantium autem. Cumque beatae ipsam. Est quae sit qui voluptatem corporis velit. Qui maxime accusamus possimus. Consequatur sequi et ea suscipit enim nesciunt quia velit.</p> --}}
                 </div>
               </div>
             </div>

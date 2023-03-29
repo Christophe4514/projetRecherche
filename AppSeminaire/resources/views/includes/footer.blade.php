@@ -3,13 +3,13 @@
     <div class="footer-top">
       <div class="container">
         <div class="row">
-
+{{-- 
           <div class="col-lg-3 col-md-6 footer-info">
             <img src="{{asset('front-end/img/logo.png') }}" alt="TheEvenet">
             <p>In alias aperiam. Placeat tempore facere. Officiis voluptate ipsam vel eveniet est dolor et totam porro. Perspiciatis ad omnis fugit molestiae recusandae possimus. Aut consectetur id quis. In inventore consequatur ad voluptate cupiditate debitis accusamus repellat cumque.</p>
-          </div>
+          </div> --}}
 
-          <div class="col-lg-3 col-md-6 footer-links">
+          <div class="col-lg-4 col-md-6 footer-links">
             <h4>Useful Links</h4>
             <ul>
               <li><i class="bi bi-chevron-right"></i> <a href="#">Home</a></li>
@@ -20,7 +20,7 @@
             </ul>
           </div>
 
-          <div class="col-lg-3 col-md-6 footer-links">
+          <div class="col-lg-4 col-md-6 footer-links">
             <h4>Useful Links</h4>
             <ul>
               <li><i class="bi bi-chevron-right"></i> <a href="#">Home</a></li>
@@ -31,14 +31,14 @@
             </ul>
           </div>
 
-          <div class="col-lg-3 col-md-6 footer-contact">
+          <div class="col-lg-4 col-md-6 footer-contact">
             <h4>Contact Us</h4>
             <p>
-              A108 Adam Street <br>
-              New York, NY 535022<br>
-              United States <br>
-              <strong>Phone:</strong> +1 5589 55488 55<br>
-              <strong>Email:</strong> info@example.com<br>
+              Université de Kinshasa <br>
+              Kinshasa<br>
+              RDC<br>
+              <strong>Phone:</strong> +243 089 55488 55<br>
+              <strong>Email:</strong> info@facsce.ac.cd<br>
             </p>
 
             <div class="social-links">

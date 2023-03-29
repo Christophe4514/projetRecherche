@@ -4,8 +4,8 @@
         <div class="container" data-aos="fade-up">
   
           <div class="section-header">
-            <h2>Contact Us</h2>
-            <p>Nihil officia ut sint molestiae tenetur.</p>
+            <h2>Contactez-nous</h2>
+            <p>Contacter notre service pour plus d'information.</p>
           </div>
   
           <div class="row contact-info">
@@ -14,7 +14,7 @@
               <div class="contact-address">
                 <i class="bi bi-geo-alt"></i>
                 <h3>Address</h3>
-                <address>A108 Adam Street, NY 535022, USA</address>
+                <address>Université de Kinshasa, Kinshasa, RDC</address>
               </div>
             </div>
   
@@ -22,7 +22,7 @@
               <div class="contact-phone">
                 <i class="bi bi-phone"></i>
                 <h3>Phone Number</h3>
-                <p><a href="tel:+155895548855">+1 5589 55488 55</a></p>
+                <p><a href="tel:+155895548855">+243 089 55488 55</a></p>
               </div>
             </div>
   
@@ -30,7 +30,7 @@
               <div class="contact-email">
                 <i class="bi bi-envelope"></i>
                 <h3>Email</h3>
-                <p><a href="mailto:info@example.com">info@example.com</a></p>
+                <p><a href="mailto:info@example.com">info@facsce.ac.cd</a></p>
               </div>
             </div>
   
