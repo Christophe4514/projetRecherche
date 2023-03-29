@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\ClientController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,6 +22,7 @@ Route::group(['middleware' => ['auth']], function() {
     require_once('user_routes.php');
     Route::get('/admin',[App\Http\Controllers\AdminController::class,'dashboard']);
     });
+Route::get('/',[ClientController::class, 'index']);
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
