@@ -23,6 +23,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/admin',[App\Http\Controllers\AdminController::class,'dashboard']);
     });
 Route::get('/',[ClientController::class, 'index']);
+Route::get('/newRegister',[ClientController::class, 'create']);
+Route::post('/newOrateur',[ClientController::class, 'store']);
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

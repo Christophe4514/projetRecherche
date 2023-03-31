@@ -23,7 +23,6 @@
           <li><a class="nav-link scrollto" href="#schedule">Calendrier</a></li>
           <li><a class="nav-link scrollto" href="#venue">Lieu</a></li>
           <li><a class="nav-link scrollto" href="#gallery">Gallerie</a></li>
-          {{-- <li><a class="nav-link scrollto" href="#supporters">Sponsors</a></li> --}}
           <!-- <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
           <ul>
             <li><a href="#">Drop Down 1</a></li>
@@ -42,10 +41,11 @@
           </ul>
         </li> -->
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+          <li><a class="nav-link buy-tickets scrollto" href="{{url('/newRegister')}}">Register Orateur</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
-      {{-- <a class="buy-tickets scrollto" href="#buy-tickets">Buy Tickets</a> --}}
+      {{-- <a class="buy-tickets scrollto" href="{{url('/register')}}">Register</a> --}}
 
     </div>
   </header><!-- End Header -->
